@@ -51,6 +51,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
 });
 
 router.get("/NewPost", middleware.isLoggedIn, function(req, res){
+	console.log(req.get("referrer"));
 	res.render("NewPost", {title: "New Post"});
 });
 
@@ -83,6 +84,7 @@ router.put("/:id", middleware.isThisYourPost, function  (req, res) {
 			req.flash("error", "There is a problem when you try to update the form")
 			res.redirect("/IndexPage");
 		} else{
+			console.log(req.get("referrer"));
 			req.flash("success", "Your post has been editted!")
 			res.redirect("/IndexPage/"+ req.params.id);
 		}
