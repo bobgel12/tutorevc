@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	trackingPost: {type: Number, default: 0},
-	trackingComment: {type: Number, default: 0},	
+	trackingComment: {type: Number, default: 0},
+	history: [ {type: String} ]	
 });
 
 UserSchema.plugin(passportLocalMongoose);

@@ -15,8 +15,6 @@ var indexPageRoutes = require("./routes/IndexPage"),
 	indexRoutes 	= require("./routes/index");
 
 
-
-
 var app = express();
 
 // Fixing the ennoying bugs
@@ -36,8 +34,8 @@ app.use(methodOverride("_method"));
 app.use(session({
 	secret: "This is the requirement for the Passport",
 	// cookies: { maxAge: 6000},
-	resave: false,
-	saveUninitialized: false
+	resave: true,
+	saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,8 +52,8 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
-app.use("/IndexPage/:id/comments",commentRoutes);
-app.use("/IndexPage/",indexPageRoutes);
+app.use("/IndexPage/:id/comments", commentRoutes);
+app.use("/IndexPage/", indexPageRoutes);
 
 
 

@@ -17,9 +17,10 @@ router.get("/AboutPage", function (req, res) {
 })
 
 
-
 // Authenticate Route
 router.get("/RegisterPage", function (req, res) {
+	req.session.url = req.url;
+	console.log(req.url)
 	res.render("RegisterPage", {title: "RegisterPage"})
 })
 router.post("/RegisterPage", function (req, res) {
@@ -41,9 +42,14 @@ router.get("/LoginPage", function (req, res) {
 
 router.post("/LoginPage",passport.authenticate("local",
 	{
-		successRedirect: "/IndexPage",
 		failureRedirect: "/LoginPage"
 	}) ,function(req, res){
+			if ((req.flash("url2"))[0]) {
+				res.redirect("/IndexPage/"+(req.flash("url"))[0]);
+			} else{
+				res.redirect("/IndexPage")
+			}
+
 })
 
 router.get("/LogOut", function (req, res) {
