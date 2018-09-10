@@ -22,9 +22,9 @@ var app = express();
 // Fixing the ennoying bugs
 // mongoose.Promise = global.Promise;
 
-var url = process.env.DATABASEURL || "mongodb://localhost/posts"
-mongoose.connect(url);
-// mongoose.connect("mongodb://phuc:phucle@ds143211.mlab.com:43211/tutorapp");
+// var url = process.env.DATABASEURL || "mongodb://localhost/posts"
+// mongoose.connect(url);
+mongoose.connect("mongodb://phuc:phucle@ds143211.mlab.com:43211/tutorapp");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
